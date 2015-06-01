@@ -1,5 +1,6 @@
 package saiday.myaudaiocast.myaudiocast;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,6 @@ import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import saiday.myaudaiocast.myaudiocast.entity.Podcast;
 import saiday.myaudaiocast.myaudiocast.restClient.HttpClient;
@@ -38,8 +38,12 @@ public class MainActivity extends ActionBarActivity implements Podcast.CreatePod
                 new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        // do whatever
-                        Log.d("test", mAdapter.getPodcast(position).title);
+                        Podcast podcast = mAdapter.getPodcast(position);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("podcast", podcast);
+                        Intent intent = new Intent(getApplicationContext(), PodcastDetailActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 })
         );
