@@ -3,8 +3,6 @@ package saiday.myaudaiocast.myaudiocast.restClient;
 import android.content.Context;
 import android.util.Log;
 
-import java.util.List;
-
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -34,8 +32,23 @@ public class HttpClient {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("test", error.toString());
+                Log.d("Fetching Error:", error.toString());
                 handler.onCreatePodcastsFailed();
+            }
+        });
+    }
+
+    public void getEpisodes(Podcast podcast, final Episode.CreateEpisodesHandler handler) {
+        mMyaudiocastAPI.fetchEpisodesByPodcastId(podcast.id, new Callback<EpisodesResponse>() {
+            @Override
+            public void success(EpisodesResponse episodesResponse, Response response) {
+                handler.onCreateEpisodesSuccess(episodesResponse.results);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("Fetching Error:", error.toString());
+                handler.onCreateEpisodesFailed();
             }
         });
     }

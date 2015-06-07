@@ -37,4 +37,6 @@ dependencies {
     compile 'com.malinskiy:superrecyclerview:1.1.0'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'com.github.kanytu:android-parallax-recyclerview:v1.2'
+    compile 'com.google.android.exoplayer:exoplayer:r1.3.3'
+    compile 'de.greenrobot:eventbus:2.4.0'
 }

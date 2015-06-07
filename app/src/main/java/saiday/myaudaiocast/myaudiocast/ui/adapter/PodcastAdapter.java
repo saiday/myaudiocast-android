@@ -51,7 +51,7 @@ public class PodcastAdapter extends RecyclerView.Adapter<PodcastViewHolder> {
         // - replace the contents of the view with that element
         Podcast podcast = mDataset.get(position);
         holder.mTextView.setText(podcast.title);
-        Picasso.with(mContext).load(podcast.cover).resize(100, 100).into(holder.mImageView);
+        Picasso.with(mContext).load(podcast.cover).resize(100, 100).placeholder(R.drawable.podcast_placeholder).into(holder.mImageView);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

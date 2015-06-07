@@ -101,6 +101,5 @@ public class MainActivity extends ActionBarActivity implements Podcast.CreatePod
 
     @Override
     public void onCreatePodcastsFailed() {
-        Log.d("log:", "fail");
     }
 }
